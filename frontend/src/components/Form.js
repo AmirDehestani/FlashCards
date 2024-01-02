@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/Form.css';
 
 const Form = ({ flashcards, setFlashcards }) => {
   // State to store form data
@@ -28,10 +29,10 @@ const Form = ({ flashcards, setFlashcards }) => {
 
   return (
     <div>
-      <h2>Flashcard</h2>
+      <h2>Add a Flashcard</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Term :{' '}
+          Term :
           <input
             type="text"
             name="term"
@@ -40,9 +41,8 @@ const Form = ({ flashcards, setFlashcards }) => {
             autoComplete="off"
           />
         </label>
-        <br />
         <label>
-          Definition :{' '}
+          Definition :
           <input
             type="text"
             name="definition"
@@ -51,8 +51,7 @@ const Form = ({ flashcards, setFlashcards }) => {
             autoComplete="off"
           />
         </label>
-        <br />
-        <button type="submit">Submit</button>
+        <button type="submit">Save</button>
       </form>
     </div>
   );

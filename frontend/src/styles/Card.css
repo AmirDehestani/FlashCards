@@ -1,0 +1,23 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: gray;
+  padding: 10px;
+  border: 1px solid white;
+  box-sizing: border-box;
+  border-radius: 3.5px;
+}
+
+.card:hover {
+  background-color: lightgray;
+  color: black;
+}
+
+.definition {
+  color: gray;
+}
+
+.card:hover .definition {
+  color: black;
+}

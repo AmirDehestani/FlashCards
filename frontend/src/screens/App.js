@@ -17,8 +17,8 @@ const App = () => {
       </div>
       <div className="main">
         <Form flashcards={flashcards} setFlashcards={setFlashcards} />
+        <Cards flashcards={flashcards} />
       </div>
-      <Cards flashcards={flashcards} />
     </>
   );
 };
