@@ -1,27 +1,25 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-require('dotenv').config();
 
+// Load all enviornment variables
 const MONGODB_URI = process.env.MONGODB_URI;
 const PORT = process.env.PORT;
-mongooseConnect().catch((err) => console.log(err));
 
-async function mongooseConnect() {
-  await mongoose.connect(MONGODB_URI);
+// Connnect to MongoDB
+mongoose.connect(MONGODB_URI);
+const db = mongoose.connection;
+db.on('error', (error) => console.log(error));
+db.once('open', () => console.log('Connected to MongoDB database'));
 
-  const cardSchema = new mongoose.Schema({
-    term: String,
-    definition: String,
-  });
+// Middewares
+app.use(express.json()); // Allows app to use JSON
 
-  const Card = mongoose.model('Card', cardSchema);
-
-  const exampleCard = new Card({ term: 'a', definition: 'one' });
-  await exampleCard.save();
-}
-
-console.log(`Connected to ${MONGODB_URI}`);
+// Routes
+const flashcardsRouter = require('./routes/flashcards');
+app.use('/flashcards', flashcardsRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
