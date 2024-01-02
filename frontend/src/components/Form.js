@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
 import '../styles/Form.css';
 
-const Form = ({ flashcards, setFlashcards }) => {
-  // State to store form data
-  const [newFlashcard, setNewFlashcard] = useState({
-    term: '',
-    definition: '',
-  });
-
+const Form = ({
+  flashcards,
+  setFlashcards,
+  newFlashcard,
+  setNewFlashcard,
+  handleSubmit,
+}) => {
   // Function to handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -15,16 +14,6 @@ const Form = ({ flashcards, setFlashcards }) => {
       ...newFlashcard,
       [name]: value,
     });
-  };
-
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can perform further actions with the form data here
-    setFlashcards(flashcards.concat(newFlashcard));
-    console.log('Form Data:', newFlashcard);
-    console.log('All cards:', flashcards);
-    setNewFlashcard({ term: '', definition: '' });
   };
 
   return (
@@ -39,6 +28,7 @@ const Form = ({ flashcards, setFlashcards }) => {
             value={newFlashcard.term}
             onChange={handleInputChange}
             autoComplete="off"
+            required
           />
         </label>
         <label>
@@ -49,6 +39,7 @@ const Form = ({ flashcards, setFlashcards }) => {
             value={newFlashcard.definition}
             onChange={handleInputChange}
             autoComplete="off"
+            required
           />
         </label>
         <button type="submit">Save</button>
