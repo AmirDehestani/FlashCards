@@ -30,7 +30,15 @@ router.post('/', async (req, res) => {
 });
 
 // Delete card
-// router.delete('/:id', (req, res) => {});
+router.delete('/:id', async (req, res) => {
+  try {
+    console.log(req);
+    const deletedCard = await Card.findByIdAndDelete(req.params.id);
+    res.status(201).json(deletedCard);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 // Update card
 // router.put('/:id', (req, res) => {});

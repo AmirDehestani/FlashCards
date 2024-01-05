@@ -15,6 +15,7 @@ const App = () => {
       console.error('Error fetching data:', err);
     }
   };
+
   const saveCard = async () => {
     try {
       axios
@@ -25,6 +26,17 @@ const App = () => {
         });
     } catch (err) {
       console.error('Error saving data:', err);
+    }
+  };
+
+  const deleteCard = async (id) => {
+    try {
+      axios.delete(`http://localhost:5000/flashcards/${id}`).then((res) => {
+        console.log('card removed: ', res.data);
+        getAll();
+      });
+    } catch (err) {
+      console.error('Error fetching data:', err);
     }
   };
 
@@ -63,7 +75,7 @@ const App = () => {
           setNewFlashcard={setNewFlashcard}
           handleSubmit={handleSubmit}
         />
-        <Cards flashcards={flashcards} />
+        <Cards flashcards={flashcards} deleteCard={deleteCard} />
       </div>
     </>
   );

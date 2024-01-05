@@ -1,10 +1,11 @@
 import '../styles/Card.css';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { useState } from 'react';
 
-const Card = ({ flashcard }) => {
+const Card = ({ flashcard, deleteCard }) => {
   const [showDefinition, setShowDefinition] = useState(false);
+
   return (
     <div className="card">
       <div className="term">{flashcard.term}</div>
@@ -27,13 +28,13 @@ const Card = ({ flashcard }) => {
           click to reveal
         </div>
       )}
-      {/* <FontAwesomeIcon
+      <FontAwesomeIcon
         onClick={() => {
-          setShowDefinition(!showDefinition);
+          deleteCard(flashcard._id);
         }}
         className="fa-icon"
-        icon={icon({ name: 'eye-slash', family: 'classic', style: 'regular' })}
-      /> */}
+        icon={icon({ name: 'trash-can', family: 'classic', style: 'regular' })}
+      />
     </div>
   );
 };

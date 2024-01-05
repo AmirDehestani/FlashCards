@@ -1,7 +1,7 @@
 import Card from './Card';
 import '../styles/Cards.css';
 
-const Cards = ({ flashcards }) => {
+const Cards = ({ flashcards, deleteCard }) => {
   return (
     <div className="cards">
       <div className="cards-header">
@@ -9,7 +9,12 @@ const Cards = ({ flashcards }) => {
         <div className="definition-header">Definition</div>
       </div>
       {flashcards.map((flashcard) => (
-        <Card className="card" key={flashcard._id} flashcard={flashcard} />
+        <Card
+          className="card"
+          key={flashcard._id}
+          flashcard={flashcard}
+          deleteCard={deleteCard}
+        />
       ))}
     </div>
   );
