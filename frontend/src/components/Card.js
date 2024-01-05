@@ -1,6 +1,6 @@
 import '../styles/Card.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { useState } from 'react';
 
 const Card = ({ flashcard }) => {
@@ -8,16 +8,32 @@ const Card = ({ flashcard }) => {
   return (
     <div className="card">
       <div className="term">{flashcard.term}</div>
-      <div className="definition">
-        {showDefinition ? flashcard.definition : ''}
-      </div>
-      <FontAwesomeIcon
+      {showDefinition ? (
+        <div
+          className="definition"
+          onClick={() => {
+            setShowDefinition(!showDefinition);
+          }}
+        >
+          {flashcard.definition}
+        </div>
+      ) : (
+        <div
+          className="hidden-definition"
+          onClick={() => {
+            setShowDefinition(!showDefinition);
+          }}
+        >
+          click to reveal
+        </div>
+      )}
+      {/* <FontAwesomeIcon
         onClick={() => {
           setShowDefinition(!showDefinition);
         }}
         className="fa-icon"
         icon={icon({ name: 'eye-slash', family: 'classic', style: 'regular' })}
-      />
+      /> */}
     </div>
   );
 };
