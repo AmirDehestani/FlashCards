@@ -23,10 +23,6 @@ app.use(express.json()); // Allows app to use JSON
 const flashcardsRouter = require('./routes/flashcards');
 app.use('/flashcards', flashcardsRouter);
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
-
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });

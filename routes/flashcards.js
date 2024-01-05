@@ -13,7 +13,14 @@ router.get('/', async (req, res) => {
 });
 
 // Get one card
-// router.get('/:id', async (req, res) => {});
+router.get('/:id', async (req, res) => {
+  try {
+    const card = await Card.findById(req.params.id);
+    res.json(card);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+});
 
 // Add card
 router.post('/', async (req, res) => {
@@ -32,7 +39,6 @@ router.post('/', async (req, res) => {
 // Delete card
 router.delete('/:id', async (req, res) => {
   try {
-    console.log(req);
     const deletedCard = await Card.findByIdAndDelete(req.params.id);
     res.status(201).json(deletedCard);
   } catch (err) {

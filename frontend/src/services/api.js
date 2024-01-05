@@ -1,35 +1,39 @@
 import axios from 'axios';
+const url = 'http://localhost:5000/flashcards';
 
 const getAll = async (setFlashcards) => {
-  try {
-    axios.get('http://localhost:5000/flashcards').then((res) => {
+  axios
+    .get(url)
+    .then((res) => {
       setFlashcards(res.data);
+    })
+    .catch((err) => {
+      console.error('Error fetching data:', err);
     });
-  } catch (err) {
-    console.error('Error fetching data:', err);
-  }
 };
 
 const saveCard = async (setFlashcards, newFlashcard) => {
-  try {
-    axios.post('http://localhost:5000/flashcards', newFlashcard).then((res) => {
+  axios
+    .post(url, newFlashcard)
+    .then((res) => {
       console.log('card saved: ', res.data);
       getAll(setFlashcards);
+    })
+    .catch((err) => {
+      console.error('Error saving data:', err);
     });
-  } catch (err) {
-    console.error('Error saving data:', err);
-  }
 };
 
 const deleteCard = async (setFlashcards, id) => {
-  try {
-    axios.delete(`http://localhost:5000/flashcards/${id}`).then((res) => {
+  axios
+    .delete(`${url}/${id}`)
+    .then((res) => {
       console.log('card removed: ', res.data);
       getAll(setFlashcards);
+    })
+    .catch((err) => {
+      console.error('Error fetching data:', err);
     });
-  } catch (err) {
-    console.error('Error fetching data:', err);
-  }
 };
 
 const apiServices = { getAll, saveCard, deleteCard };
