@@ -1,4 +1,22 @@
 .cards {
   min-width: 300px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cards-header {
+  font-weight: bold;
+  font-size: 18px;
+  background-color: gray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+  height: 35px;
+}
+
+.fa-icon {
+  background-color: gray;
 }
