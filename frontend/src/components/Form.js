@@ -1,12 +1,6 @@
 import '../styles/Form.css';
 
-const Form = ({
-  flashcards,
-  setFlashcards,
-  newFlashcard,
-  setNewFlashcard,
-  handleSubmit,
-}) => {
+const Form = ({ newFlashcard, setNewFlashcard, handleSubmit }) => {
   // Function to handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;

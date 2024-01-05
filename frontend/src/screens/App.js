@@ -3,45 +3,13 @@ import { Link } from 'react-router-dom';
 import Form from '../components/Form';
 import Cards from '../components/Cards';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import apiServices from '../services/api';
 
 const App = () => {
-  const getAll = async () => {
-    try {
-      axios.get('http://localhost:5000/flashcards').then((res) => {
-        setFlashcards(res.data);
-      });
-    } catch (err) {
-      console.error('Error fetching data:', err);
-    }
-  };
-
-  const saveCard = async () => {
-    try {
-      axios
-        .post('http://localhost:5000/flashcards', newFlashcard)
-        .then((res) => {
-          console.log('card saved: ', res.data);
-          getAll();
-        });
-    } catch (err) {
-      console.error('Error saving data:', err);
-    }
-  };
-
-  const deleteCard = async (id) => {
-    try {
-      axios.delete(`http://localhost:5000/flashcards/${id}`).then((res) => {
-        console.log('card removed: ', res.data);
-        getAll();
-      });
-    } catch (err) {
-      console.error('Error fetching data:', err);
-    }
-  };
+  const { getAll, saveCard, deleteCard } = apiServices;
 
   useEffect(() => {
-    getAll();
+    getAll(setFlashcards);
   }, []);
 
   // State to store form data
@@ -53,7 +21,7 @@ const App = () => {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    saveCard();
+    saveCard(setFlashcards, newFlashcard);
     setNewFlashcard({ term: '', definition: '' });
   };
 
@@ -75,7 +43,11 @@ const App = () => {
           setNewFlashcard={setNewFlashcard}
           handleSubmit={handleSubmit}
         />
-        <Cards flashcards={flashcards} deleteCard={deleteCard} />
+        <Cards
+          flashcards={flashcards}
+          setFlashcards={setFlashcards}
+          deleteCard={deleteCard}
+        />
       </div>
     </>
   );
