@@ -2,19 +2,11 @@ import axios from 'axios';
 const url = 'http://localhost:5000/flashcards';
 
 const getAll = async () => {
-  return axios.get(url).then((res) => res);
+  return axios.get(url).then((res) => res.data);
 };
 
-const saveCard = async (setFlashcards, newFlashcard) => {
-  axios
-    .post(url, newFlashcard)
-    .then((res) => {
-      console.log('card saved: ', res.data);
-      getAll(setFlashcards);
-    })
-    .catch((err) => {
-      console.error('Error saving data:', err);
-    });
+const saveCard = async (newFlashcard) => {
+  return axios.post(url, newFlashcard).then((res) => getAll());
 };
 
 const deleteCard = async (setFlashcards, id) => {

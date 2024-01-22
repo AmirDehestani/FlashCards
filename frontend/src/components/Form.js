@@ -1,7 +1,7 @@
 import '../styles/Form.css';
 
 const Form = ({ newFlashcard, setNewFlashcard, handleSubmit }) => {
-  // Function to handle form input changes
+  // Form input change handler
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewFlashcard({
