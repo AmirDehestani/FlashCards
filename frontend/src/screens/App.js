@@ -29,6 +29,13 @@ const App = () => {
       .catch((err) => console.log('error saving data: ', err));
     setNewFlashcard({ term: '', definition: '' });
   };
+  const handleDelete = (id) => {
+    deleteCard(id)
+      .then((res) => {
+        setFlashcards(res);
+      })
+      .catch((err) => console.log('error deleting data: ', err));
+  };
 
   useEffect(() => {
     getAll()
@@ -45,17 +52,11 @@ const App = () => {
       </div>
       <div className="main">
         <Form
-          flashcards={flashcards}
-          setFlashcards={setFlashcards}
           newFlashcard={newFlashcard}
           setNewFlashcard={setNewFlashcard}
           handleSubmit={handleSubmit}
         />
-        <Cards
-          flashcards={flashcards}
-          setFlashcards={setFlashcards}
-          deleteCard={deleteCard}
-        />
+        <Cards flashcards={flashcards} deleteHandler={handleDelete} />
       </div>
     </>
   );

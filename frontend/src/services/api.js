@@ -9,16 +9,8 @@ const saveCard = async (newFlashcard) => {
   return axios.post(url, newFlashcard).then((res) => getAll());
 };
 
-const deleteCard = async (setFlashcards, id) => {
-  axios
-    .delete(`${url}/${id}`)
-    .then((res) => {
-      console.log('card removed: ', res.data);
-      getAll(setFlashcards);
-    })
-    .catch((err) => {
-      console.error('Error fetching data:', err);
-    });
+const deleteCard = async (id) => {
+  return axios.delete(`${url}/${id}`).then((res) => getAll());
 };
 
 const apiServices = { getAll, saveCard, deleteCard };

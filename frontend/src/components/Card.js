@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { useState } from 'react';
 
-const Card = ({ flashcard, setFlashcards, deleteCard }) => {
+const Card = ({ flashcard, deleteHandler }) => {
   const [showDefinition, setShowDefinition] = useState(false);
 
   return (
@@ -30,7 +30,7 @@ const Card = ({ flashcard, setFlashcards, deleteCard }) => {
       )}
       <FontAwesomeIcon
         onClick={() => {
-          deleteCard(setFlashcards, flashcard._id);
+          deleteHandler(flashcard._id);
         }}
         className="fa-icon"
         icon={icon({ name: 'trash-can', family: 'classic', style: 'regular' })}
