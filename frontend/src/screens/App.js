@@ -9,7 +9,9 @@ const App = () => {
   const { getAll, saveCard, deleteCard } = apiServices;
 
   useEffect(() => {
-    getAll(setFlashcards);
+    getAll()
+      .then((res) => setFlashcards(res.data))
+      .catch((err) => console.log('error fetching data: ', err));
   }, []);
 
   // State to store form data

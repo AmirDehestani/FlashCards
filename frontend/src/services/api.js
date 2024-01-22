@@ -1,15 +1,8 @@
 import axios from 'axios';
 const url = 'http://localhost:5000/flashcards';
 
-const getAll = async (setFlashcards) => {
-  axios
-    .get(url)
-    .then((res) => {
-      setFlashcards(res.data);
-    })
-    .catch((err) => {
-      console.error('Error fetching data:', err);
-    });
+const getAll = async () => {
+  return axios.get(url).then((res) => res);
 };
 
 const saveCard = async (setFlashcards, newFlashcard) => {
