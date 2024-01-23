@@ -1,6 +1,14 @@
+:root {
+  --background-color: #eeeeee;
+  --primary-color: #222831;
+  --secondary-color: #393e46;
+  --accent-color: #00adb5;
+  --text-color: #eeeeee;
+}
+
 .cards {
   min-width: 300px;
-  color: white;
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -9,7 +17,7 @@
 .cards-header {
   font-weight: bold;
   font-size: 18px;
-  background-color: gray;
+  background-color: var(--primary-color);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -18,5 +26,5 @@
 }
 
 .fa-icon {
-  background-color: gray;
+  background-color: var(--primary-color);
 }

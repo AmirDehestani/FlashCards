@@ -1,8 +1,33 @@
+:root {
+  --background-color: #eeeeee;
+  --primary-color: #222831;
+  --secondary-color: #393e46;
+  --accent-color: #00adb5;
+  --text-color: #eeeeee;
+}
+
+.submission-form {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  padding: 15px;
+  border-radius: 5px;
+}
+
 form {
   display: flex;
   flex-direction: column;
   gap: 7px;
   font-size: 16px;
+}
+
+input {
+  height: 24px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: solid var(--secondary-color) 2px;
 }
 
 label {
@@ -19,4 +44,15 @@ label input {
 
 h2 {
   text-align: center;
+  margin-top: 0;
+}
+
+.save-button {
+  background-color: var(--accent-color);
+  border: solid var(--primary-color) 2px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: var(--text-color);
+  cursor: pointer;
+  height: 24px;
 }

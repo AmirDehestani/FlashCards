@@ -11,7 +11,7 @@ const Form = ({ newFlashcard, setNewFlashcard, handleSubmit }) => {
   };
 
   return (
-    <div>
+    <div className="submission-form">
       <h2>Add a Flashcard</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -36,7 +36,9 @@ const Form = ({ newFlashcard, setNewFlashcard, handleSubmit }) => {
             required
           />
         </label>
-        <button type="submit">Save</button>
+        <button className="save-button" type="submit">
+          Save
+        </button>
       </form>
     </div>
   );

@@ -29,6 +29,7 @@ const App = () => {
       .catch((err) => console.log('error saving data: ', err));
     setNewFlashcard({ term: '', definition: '' });
   };
+  // Card deletion handler
   const handleDelete = (id) => {
     deleteCard(id)
       .then((res) => {
