@@ -13,10 +13,10 @@
   border-radius: 5px;
 }
 
-form {
+.submission-form form {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 10px;
   font-size: 16px;
 }
 
@@ -30,7 +30,7 @@ input:focus {
   outline: solid var(--secondary-color) 2px;
 }
 
-label {
+.input-field {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -38,8 +38,9 @@ label {
   margin: 0 0 0 0;
 }
 
-label input {
+.input-field input {
   margin-left: 10px;
+  height: 27px;
 }
 
 h2 {
@@ -54,5 +55,9 @@ h2 {
   box-sizing: border-box;
   color: var(--text-color);
   cursor: pointer;
-  height: 24px;
+  height: 30px;
+}
+
+.save-button:hover {
+  text-decoration: underline;
 }

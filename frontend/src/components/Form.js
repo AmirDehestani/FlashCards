@@ -14,8 +14,8 @@ const Form = ({ newFlashcard, setNewFlashcard, handleSubmit }) => {
     <div className="submission-form">
       <h2>Add a Flashcard</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Term :
+        <div className="input-field">
+          <label for="term">Term :</label>
           <input
             type="text"
             name="term"
@@ -24,9 +24,10 @@ const Form = ({ newFlashcard, setNewFlashcard, handleSubmit }) => {
             autoComplete="off"
             required
           />
-        </label>
-        <label>
-          Definition :
+        </div>
+
+        <div className="input-field">
+          <label for="definition">Definition :</label>
           <input
             type="text"
             name="definition"
@@ -35,7 +36,8 @@ const Form = ({ newFlashcard, setNewFlashcard, handleSubmit }) => {
             autoComplete="off"
             required
           />
-        </label>
+        </div>
+
         <button className="save-button" type="submit">
           Save
         </button>
