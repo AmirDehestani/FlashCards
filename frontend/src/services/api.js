@@ -13,5 +13,9 @@ const deleteCard = async (id) => {
   return axios.delete(`${url}/${id}`).then((res) => getAll());
 };
 
-const apiServices = { getAll, saveCard, deleteCard };
+const updateCard = async (id, updatedCard) => {
+  return axios.put(`${url}/${id}`, updatedCard).then((res) => getAll());
+};
+
+const apiServices = { getAll, saveCard, deleteCard, updateCard };
 export default apiServices;

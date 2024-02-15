@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { useState } from 'react';
 
-const Card = ({ flashcard, deleteHandler }) => {
+const Card = ({ flashcard, deleteHandler, updateHandler }) => {
   const [showDefinition, setShowDefinition] = useState(false);
 
   return (
@@ -34,6 +34,14 @@ const Card = ({ flashcard, deleteHandler }) => {
         }}
         className="fa-icon"
         icon={icon({ name: 'trash-can', family: 'classic', style: 'regular' })}
+      />
+      <FontAwesomeIcon
+        className="fa-icon"
+        icon={icon({
+          name: 'pen-to-square',
+          family: 'classic',
+          style: 'regular',
+        })}
       />
     </div>
   );

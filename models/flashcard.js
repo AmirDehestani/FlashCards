@@ -9,6 +9,10 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Card = mongoose.model('Card', cardSchema);

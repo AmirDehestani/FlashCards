@@ -1,7 +1,7 @@
 import Card from './Card';
 import '../styles/Cards.css';
 
-const Cards = ({ flashcards, deleteHandler }) => {
+const Cards = ({ flashcards, deleteHandler, updateHandler }) => {
   return (
     <div className="cards">
       <div className="cards-header">
@@ -14,6 +14,7 @@ const Cards = ({ flashcards, deleteHandler }) => {
           key={flashcard._id}
           flashcard={flashcard}
           deleteHandler={deleteHandler}
+          updateHandler={updateHandler}
         />
       ))}
     </div>

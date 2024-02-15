@@ -5,7 +5,7 @@ const Card = require('../models/flashcard'); // Get mongoose model
 // Get all cards
 router.get('/', async (req, res) => {
   try {
-    const cards = await Card.find();
+    const cards = await Card.find().sort({ date: -1 });
     res.json(cards);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -47,6 +47,16 @@ router.delete('/:id', async (req, res) => {
 });
 
 // Update card
-// router.put('/:id', (req, res) => {});
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedCard = await Card.findByIdAndUpdate(
+      req.params.id,
+      req.body.updatedCard
+    );
+    res.status(201).json(updatedCard);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 module.exports = router;

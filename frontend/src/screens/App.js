@@ -7,7 +7,7 @@ import apiServices from '../services/api';
 
 const App = () => {
   // API services
-  const { getAll, saveCard, deleteCard } = apiServices;
+  const { getAll, saveCard, deleteCard, updateCard } = apiServices;
 
   // Application state
   // State to store all cards
@@ -19,7 +19,7 @@ const App = () => {
   });
 
   // Handlers
-  // Form submission handler
+  // Form submit handler
   const handleSubmit = (e) => {
     e.preventDefault();
     saveCard(newFlashcard)
@@ -29,13 +29,21 @@ const App = () => {
       .catch((err) => console.log('error saving data: ', err));
     setNewFlashcard({ term: '', definition: '' });
   };
-  // Card deletion handler
+  // Card delete handler
   const handleDelete = (id) => {
     deleteCard(id)
       .then((res) => {
         setFlashcards(res);
       })
       .catch((err) => console.log('error deleting data: ', err));
+  };
+  // Card update handler
+  const handleUpdate = (id, updatedCard) => {
+    updateCard(id, updateCard)
+      .then((res) => {
+        setFlashcards(res);
+      })
+      .catch((err) => console.log('error updating data: ', err));
   };
 
   useEffect(() => {
@@ -57,7 +65,11 @@ const App = () => {
           setNewFlashcard={setNewFlashcard}
           handleSubmit={handleSubmit}
         />
-        <Cards flashcards={flashcards} deleteHandler={handleDelete} />
+        <Cards
+          flashcards={flashcards}
+          deleteHandler={handleDelete}
+          updateHandler={handleUpdate}
+        />
       </div>
     </>
   );

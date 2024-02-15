@@ -11,6 +11,7 @@
   background-color: var(--primary-color);
   padding: 15px;
   border-radius: 5px;
+  min-width: 300px;
 }
 
 .submission-form form {
@@ -24,6 +25,8 @@ input {
   height: 24px;
   box-sizing: border-box;
   border-radius: 5px;
+  width: 100%;
+  max-width: 200px;
 }
 
 input:focus {

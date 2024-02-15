@@ -7,7 +7,7 @@
 }
 
 .cards {
-  min-width: 300px;
+  min-width: 400px;
   color: var(--text-color);
   display: flex;
   flex-direction: column;
