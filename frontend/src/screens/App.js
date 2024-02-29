@@ -58,6 +58,9 @@ const App = () => {
         <Link className="nav-link" to="/">
           Home
         </Link>
+        <Link className="nav-link" to="/login">
+          Login
+        </Link>
       </div>
       <div className="main">
         <Form
