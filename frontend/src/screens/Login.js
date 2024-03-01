@@ -19,7 +19,7 @@ const Login = () => {
               <h1>Sign In</h1>
             </div>
             <div className="input-section">
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
               <input
                 className="input-field"
                 type="email"
@@ -28,7 +28,7 @@ const Login = () => {
               />
             </div>
             <div className="input-section">
-              <label for="username">Username</label>
+              <label htmlFor="username">Username</label>
               <input
                 className="input-field"
                 type="text"
@@ -37,7 +37,7 @@ const Login = () => {
               />
             </div>
             <div className="input-section">
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
               <input
                 className="input-field"
                 type="password"

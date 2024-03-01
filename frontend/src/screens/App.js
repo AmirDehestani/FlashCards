@@ -39,7 +39,7 @@ const App = () => {
   };
   // Card update handler
   const handleUpdate = (id, updatedCard) => {
-    updateCard(id, updateCard)
+    updateCard(id, updatedCard)
       .then((res) => {
         setFlashcards(res);
       })

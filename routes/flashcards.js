@@ -49,10 +49,7 @@ router.delete('/:id', async (req, res) => {
 // Update card
 router.put('/:id', async (req, res) => {
   try {
-    const updatedCard = await Card.findByIdAndUpdate(
-      req.params.id,
-      req.body.updatedCard
-    );
+    const updatedCard = await Card.findByIdAndUpdate(req.params.id, req.body);
     res.status(201).json(updatedCard);
   } catch (err) {
     res.status(500).json({ message: err.message });

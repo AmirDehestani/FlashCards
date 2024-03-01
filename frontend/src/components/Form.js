@@ -15,7 +15,7 @@ const Form = ({ newFlashcard, setNewFlashcard, handleSubmit }) => {
       <h2>Add a Flashcard</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-field">
-          <label for="term">Term :</label>
+          <label htmlFor="term">Term :</label>
           <input
             type="text"
             name="term"
@@ -27,7 +27,7 @@ const Form = ({ newFlashcard, setNewFlashcard, handleSubmit }) => {
         </div>
 
         <div className="input-field">
-          <label for="definition">Definition :</label>
+          <label htmlFor="definition">Definition :</label>
           <input
             type="text"
             name="definition"
