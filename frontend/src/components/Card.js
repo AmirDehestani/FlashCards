@@ -21,55 +21,56 @@ const Card = ({ flashcard, deleteHandler, updateHandler }) => {
 
   return (
     <>
-      <div className="card">
-        <div className="term">{flashcard.term}</div>
-        {showDefinition ? (
-          <div
-            className="definition"
+      {!editMode ? (
+        <div className="card">
+          <div className="term">{flashcard.term}</div>
+          {showDefinition ? (
+            <div
+              className="definition"
+              onClick={() => {
+                setShowDefinition(!showDefinition);
+              }}
+            >
+              {flashcard.definition}
+            </div>
+          ) : (
+            <div
+              className="hidden-definition"
+              onClick={() => {
+                setShowDefinition(!showDefinition);
+              }}
+            >
+              click to reveal
+            </div>
+          )}
+          <FontAwesomeIcon
             onClick={() => {
-              setShowDefinition(!showDefinition);
+              deleteHandler(flashcard._id);
             }}
-          >
-            {flashcard.definition}
-          </div>
-        ) : (
-          <div
-            className="hidden-definition"
+            className="fa-icon"
+            icon={icon({
+              name: 'trash-can',
+              family: 'classic',
+              style: 'regular',
+            })}
+          />
+          <FontAwesomeIcon
+            className="fa-icon"
+            icon={icon({
+              name: 'pen-to-square',
+              family: 'classic',
+              style: 'regular',
+            })}
             onClick={() => {
-              setShowDefinition(!showDefinition);
+              setEditMode(!editMode);
+              setUpdatedFlashcard({
+                term: flashcard.term,
+                definition: flashcard.definition,
+              });
             }}
-          >
-            click to reveal
-          </div>
-        )}
-        <FontAwesomeIcon
-          onClick={() => {
-            deleteHandler(flashcard._id);
-          }}
-          className="fa-icon"
-          icon={icon({
-            name: 'trash-can',
-            family: 'classic',
-            style: 'regular',
-          })}
-        />
-        <FontAwesomeIcon
-          className="fa-icon"
-          icon={icon({
-            name: 'pen-to-square',
-            family: 'classic',
-            style: 'regular',
-          })}
-          onClick={() => {
-            setEditMode(!editMode);
-            setUpdatedFlashcard({
-              term: flashcard.term,
-              definition: flashcard.definition,
-            });
-          }}
-        />
-      </div>
-      {editMode ? (
+          />
+        </div>
+      ) : (
         <div className="card">
           <input
             type="text"
@@ -109,8 +110,6 @@ const Card = ({ flashcard, deleteHandler, updateHandler }) => {
             }}
           />
         </div>
-      ) : (
-        ''
       )}
     </>
   );

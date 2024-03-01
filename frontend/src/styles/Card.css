@@ -15,21 +15,7 @@
   gap: 2px;
 }
 
-.term {
-  width: 100%;
-  height: 100%;
-  background-color: var(--primary-color);
-  border-radius: 3px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 1px;
-  box-sizing: border-box;
-}
-
-.term:hover {
-  background-color: var(--secondary-color);
-}
-
+.term,
 .definition {
   width: 100%;
   height: 100%;
@@ -37,11 +23,14 @@
   border-radius: 3px;
   padding-left: 5px;
   padding-right: 5px;
-  padding-top: 1px;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 
-.definition:hover {
+.term:hover,
+.definition:hover,
+.hidden-definition:hover {
   background-color: var(--secondary-color);
 }
 
@@ -60,10 +49,6 @@
   text-align: center;
 }
 
-.hidden-definition:hover {
-  background-color: var(--secondary-color);
-}
-
 .fa-icon {
   width: 15px;
   padding: 9.5px;
@@ -76,23 +61,7 @@
   cursor: pointer;
 }
 
-.term-edit-mode {
-  width: 100%;
-  height: 100%;
-  background-color: var(--secondary-color);
-  border-radius: 3px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 1px;
-  box-sizing: border-box;
-  color: var(--text-color);
-  border: none;
-}
-
-.term-edit-mode:focus {
-  outline: none;
-}
-
+.term-edit-mode,
 .definition-edit-mode {
   width: 100%;
   height: 100%;
@@ -106,6 +75,7 @@
   border: none;
 }
 
+.term-edit-mode:focus,
 .definition-edit-mode:focus {
   outline: none;
 }
