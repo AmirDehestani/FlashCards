@@ -1,10 +1,17 @@
-import Navbar from '../components/Navbar';
 import '../styles/Login.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
     <>
-      <Navbar />
+      <div className="navbar">
+        <Link className="nav-link" to="/">
+          Home
+        </Link>
+        <Link className="nav-link" to="/login">
+          Login
+        </Link>
+      </div>
       <div className="sign-in-container">
         <form>
           <div className="inputs-wrapper">

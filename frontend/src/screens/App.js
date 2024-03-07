@@ -1,7 +1,7 @@
 import '../styles/App.css';
-import { Link } from 'react-router-dom';
 import Form from '../components/Form';
 import Cards from '../components/Cards';
+import Navbar from '../components/Navbar';
 import { useEffect, useState } from 'react';
 import apiServices from '../services/api';
 
@@ -54,14 +54,7 @@ const App = () => {
 
   return (
     <>
-      <div className="navbar">
-        <Link className="nav-link" to="/">
-          Home
-        </Link>
-        <Link className="nav-link" to="/login">
-          Login
-        </Link>
-      </div>
+      <Navbar />
       <div className="main">
         <Form
           newFlashcard={newFlashcard}
