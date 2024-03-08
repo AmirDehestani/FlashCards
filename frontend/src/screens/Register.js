@@ -1,13 +1,42 @@
 import '../styles/Register.css';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import usersServices from '../services/users';
 
-const Login = () => {
+const Register = () => {
+  const { createUser } = usersServices;
+
+  const [newUser, setNewUser] = useState({
+    email: '',
+    username: '',
+    password: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewUser({
+      ...newUser,
+      [name]: value,
+    });
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    createUser(newUser).then((res) =>
+      setNewUser({
+        email: '',
+        username: '',
+        password: '',
+      })
+    );
+  };
+
   return (
     <>
       <Navbar />
       <div className="register-container">
-        <form>
+        <form onSubmit={handleRegister}>
           <div className="inputs-wrapper">
             <div className="form-header">
               <h1>Register</h1>
@@ -19,6 +48,8 @@ const Login = () => {
                 type="email"
                 name="email"
                 id="email"
+                value={newUser.email}
+                onChange={handleInputChange}
               />
             </div>
             <div className="input-section">
@@ -28,6 +59,8 @@ const Login = () => {
                 type="text"
                 name="username"
                 id="username"
+                value={newUser.username}
+                onChange={handleInputChange}
               />
             </div>
             <div className="input-section">
@@ -37,15 +70,8 @@ const Login = () => {
                 type="password"
                 name="password"
                 id="password"
-              />
-            </div>
-            <div className="input-section">
-              <label htmlFor="password">Verify Password</label>
-              <input
-                className="input-field"
-                type="password"
-                name="password"
-                id="password"
+                value={newUser.password}
+                onChange={handleInputChange}
               />
             </div>
             <div>
@@ -61,4 +87,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
