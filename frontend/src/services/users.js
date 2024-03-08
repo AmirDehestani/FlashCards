@@ -5,5 +5,9 @@ const createUser = async (newUser) => {
   return axios.post(url, newUser).then((res) => res);
 };
 
-const usersServices = { createUser };
+const loginUser = async (user) => {
+  return axios.post(`${url}/login`, user).then((res) => res);
+};
+
+const usersServices = { createUser, loginUser };
 export default usersServices;

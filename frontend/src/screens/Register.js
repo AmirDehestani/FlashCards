@@ -23,7 +23,7 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    createUser(newUser).then((res) =>
+    createUser(newUser).then(() =>
       setNewUser({
         email: '',
         username: '',
