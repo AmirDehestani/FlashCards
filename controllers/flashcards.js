@@ -1,9 +1,9 @@
 const express = require('express');
-const router = express.Router();
+const flashcardsRouter = express.Router();
 const Card = require('../models/flashcard'); // Get mongoose model
 
 // Get all cards
-router.get('/', async (req, res) => {
+flashcardsRouter.get('/', async (req, res) => {
   try {
     const cards = await Card.find().sort({ date: -1 });
     res.json(cards);
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get one card
-router.get('/:id', async (req, res) => {
+flashcardsRouter.get('/:id', async (req, res) => {
   try {
     const card = await Card.findById(req.params.id);
     res.json(card);
@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Add card
-router.post('/', async (req, res) => {
+flashcardsRouter.post('/', async (req, res) => {
   const card = new Card({
     term: req.body.term,
     definition: req.body.definition,
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
 });
 
 // Delete card
-router.delete('/:id', async (req, res) => {
+flashcardsRouter.delete('/:id', async (req, res) => {
   try {
     const deletedCard = await Card.findByIdAndDelete(req.params.id);
     res.status(201).json(deletedCard);
@@ -47,7 +47,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 // Update card
-router.put('/:id', async (req, res) => {
+flashcardsRouter.put('/:id', async (req, res) => {
   try {
     const updatedCard = await Card.findByIdAndUpdate(req.params.id, req.body);
     res.status(201).json(updatedCard);
@@ -56,4 +56,4 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = flashcardsRouter;

@@ -1,19 +1,19 @@
 import axios from 'axios';
 const url = 'http://localhost:5000/flashcards';
 
-const getAll = async () => {
+const getAll = () => {
   return axios.get(url).then((res) => res.data);
 };
 
-const saveCard = async (newFlashcard) => {
+const saveCard = (newFlashcard) => {
   return axios.post(url, newFlashcard).then((res) => getAll());
 };
 
-const deleteCard = async (id) => {
+const deleteCard = (id) => {
   return axios.delete(`${url}/${id}`).then((res) => getAll());
 };
 
-const updateCard = async (id, updatedCard) => {
+const updateCard = (id, updatedCard) => {
   return axios.put(`${url}/${id}`, updatedCard).then((res) => getAll());
 };
 

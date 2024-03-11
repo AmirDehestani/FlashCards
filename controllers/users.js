@@ -1,9 +1,9 @@
 const express = require('express');
-const router = express.Router();
+const usersRouter = express.Router();
 const User = require('../models/user'); // Get mongoose model
 const bcrypt = require('bcrypt');
 
-router.get('/', async (req, res) => {
+usersRouter.get('/', async (req, res) => {
   try {
     const users = await User.find();
     res.json(users);
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+usersRouter.post('/', async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = new User({
@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/login', async (req, res) => {
+usersRouter.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
     if (user == null) {
@@ -43,4 +43,4 @@ router.post('/login', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = usersRouter;
