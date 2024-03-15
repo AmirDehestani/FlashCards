@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 usersRouter.get('/', async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().populate('cards');
     res.json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -23,6 +23,14 @@ usersRouter.post('/', async (req, res) => {
     const newUser = await user.save();
     res.status(201).json(newUser);
   } catch (err) {
+    if (
+      err.name === 'MongoServerError' &&
+      err.message.includes('E11000 duplicate key error')
+    ) {
+      res
+        .status(400)
+        .json({ message: 'expected `username` and `e-mail` to be unique' });
+    }
     res.status(500).json({ message: err.message });
   }
 });
