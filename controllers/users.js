@@ -35,20 +35,4 @@ usersRouter.post('/', async (req, res) => {
   }
 });
 
-usersRouter.post('/login', async (req, res) => {
-  try {
-    const user = await User.findOne({ username: req.body.username });
-    if (user == null) {
-      return res.status(404).send('User not found');
-    }
-    if (await bcrypt.compare(req.body.password, user.password)) {
-      res.send('Success');
-    } else {
-      res.send('Access denied');
-    }
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
 module.exports = usersRouter;

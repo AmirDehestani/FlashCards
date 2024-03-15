@@ -23,6 +23,8 @@ const flashcardsRouter = require('./controllers/flashcards');
 app.use('/flashcards', flashcardsRouter);
 const usersRouter = require('./controllers/users');
 app.use('/users', usersRouter);
+const loginRouter = require('./controllers/login');
+app.use('/login', loginRouter);
 
 app.listen(config.PORT, () => {
   console.log(`App listening on port ${config.PORT}`);
