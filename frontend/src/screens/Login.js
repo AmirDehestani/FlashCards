@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import '../styles/Login.css';
 import { useState } from 'react';
-import usersServices from '../services/users';
+import loginServices from '../services/login';
 
 const Login = () => {
-  const { loginUser } = usersServices;
+  const { loginUser } = loginServices;
 
   const [user, setUser] = useState({
     username: '',

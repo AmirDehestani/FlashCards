@@ -4,15 +4,23 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   username: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
     requierd: true,
   },
+  cards: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Card',
+    },
+  ],
 });
 
 const User = mongoose.model('User', userSchema);
