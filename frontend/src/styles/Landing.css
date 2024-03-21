@@ -1,0 +1,72 @@
+.big-banner {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  width: 95%;
+  margin: auto;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 25px;
+  margin: 20px auto 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.banner-text-section {
+  flex: 1 1 285px;
+}
+
+.banner-image-section {
+  flex: 1 0 250px;
+  max-width: 400px;
+}
+
+.art-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.sections-title {
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.features {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.features-card {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  height: 130px;
+  flex: 1 1 335px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.get-started-button {
+  max-width: 300px;
+  width: 100%;
+  height: 40px;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  font-weight: bold;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.get-started-button:hover {
+  background-color: var(--accent-color-light);
+  cursor: pointer;
+}

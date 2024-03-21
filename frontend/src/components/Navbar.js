@@ -14,25 +14,32 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <Link className="nav-link" to="/">
-        Home
-      </Link>
-      {accessToken ? (
-        <>
-          <Link className="nav-link" onClick={handleLogout}>
-            Log out
-          </Link>
-        </>
-      ) : (
-        <>
-          <Link className="nav-link" to="/login">
-            Login
-          </Link>
-          <Link className="nav-link" to="/register">
-            Register
-          </Link>
-        </>
-      )}
+      <div className="logo">
+        <i>
+          <b>Spark</b>
+        </i>
+      </div>
+      <div className="links">
+        <Link className="nav-link" to="/">
+          Home
+        </Link>
+        {accessToken ? (
+          <>
+            <Link className="nav-link" onClick={handleLogout}>
+              Log out
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link className="nav-link" to="/login">
+              Login
+            </Link>
+            <Link className="nav-link" to="/register">
+              Register
+            </Link>
+          </>
+        )}
+      </div>
     </div>
   );
 };
