@@ -21,6 +21,8 @@ app.use(express.json()); // Allows app to use JSON
 // Routes
 const flashcardsRouter = require('./controllers/flashcards');
 app.use('/flashcards', flashcardsRouter);
+const decksRouter = require('./controllers/decks');
+app.use('/decks', decksRouter);
 const usersRouter = require('./controllers/users');
 app.use('/users', usersRouter);
 const loginRouter = require('./controllers/login');

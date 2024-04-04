@@ -3,7 +3,7 @@ import Form from '../components/Form';
 import Cards from '../components/Cards';
 import Navbar from '../components/Navbar';
 import { useEffect, useState } from 'react';
-import apiServices from '../services/api';
+import apiServices from '../services/flashcardService';
 
 const App = () => {
   // API services

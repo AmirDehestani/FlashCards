@@ -2,7 +2,7 @@ import '../styles/Register.css';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import usersServices from '../services/users';
+import usersServices from '../services/userService';
 
 const Register = () => {
   const { createUser } = usersServices;

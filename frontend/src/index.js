@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <Landing />,
   },
   {
-    path: '/home',
+    path: '/dashboard',
     element: <App />,
   },
   {

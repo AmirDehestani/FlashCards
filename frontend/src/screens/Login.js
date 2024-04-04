@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import '../styles/Login.css';
 import { useState } from 'react';
-import loginServices from '../services/login';
+import loginServices from '../services/loginService';
 
 const Login = () => {
   const { loginUser } = loginServices;

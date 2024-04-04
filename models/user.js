@@ -15,10 +15,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     requierd: true,
   },
-  cards: [
+  decks: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Card',
+      ref: 'Deck',
     },
   ],
 });

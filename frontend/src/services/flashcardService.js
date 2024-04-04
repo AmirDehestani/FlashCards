@@ -17,5 +17,5 @@ const updateCard = (id, updatedCard) => {
   return axios.put(`${url}/${id}`, updatedCard).then((res) => getAll());
 };
 
-const apiServices = { getAll, saveCard, deleteCard, updateCard };
-export default apiServices;
+const flashcardService = { getAll, saveCard, deleteCard, updateCard };
+export default flashcardService;

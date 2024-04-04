@@ -5,5 +5,5 @@ const createUser = (newUser) => {
   return axios.post(url, newUser).then((res) => res);
 };
 
-const usersServices = { createUser };
-export default usersServices;
+const usersService = { createUser };
+export default usersService;

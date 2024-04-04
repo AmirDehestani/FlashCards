@@ -20,17 +20,20 @@ const Navbar = () => {
         </i>
       </div>
       <div className="links">
-        <Link className="nav-link" to="/">
-          Home
-        </Link>
         {accessToken ? (
           <>
+            <Link className="nav-link" to="/dashboard">
+              Dashboard
+            </Link>
             <Link className="nav-link" onClick={handleLogout}>
               Log out
             </Link>
           </>
         ) : (
           <>
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
             <Link className="nav-link" to="/login">
               Login
             </Link>

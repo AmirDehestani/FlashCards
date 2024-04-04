@@ -17,5 +17,5 @@ const loginUser = (user) => {
   });
 };
 
-const loginServices = { loginUser };
-export default loginServices;
+const loginService = { loginUser };
+export default loginService;

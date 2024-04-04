@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 usersRouter.get('/', async (req, res) => {
   try {
-    const users = await User.find().populate('cards');
+    const users = await User.find().populate('decks');
     res.json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
