@@ -25,3 +25,13 @@ Content-Type: application/json
 
 GET http://localhost:5000/flashcards
 
+###
+
+GET http://localhost:5000/decks
+
+###
+POST http://localhost:5000/decks
+Content-Type: application/json
+{
+    "name": "Example deck"
+}

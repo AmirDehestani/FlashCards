@@ -4,6 +4,8 @@ const Card = require('../models/flashcard'); // Get mongoose model
 const User = require('../models/user'); // Get mongoose model
 const jwt = require('jsonwebtoken');
 
+// TODO: Ensure authorization for all endpoints
+
 const getTokenFrom = (req) => {
   const authorization = req.get('authorization');
   if (authorization && authorization.startsWith('Bearer ')) {
@@ -34,24 +36,24 @@ flashcardsRouter.get('/:id', async (req, res) => {
 
 // Add card
 flashcardsRouter.post('/', async (req, res) => {
-  // Decode JWT token
-  const decodedToken = jwt.verify(
-    getTokenFrom(req),
-    process.env.ACCESS_TOKEN_SECRET
-  );
-  // Set user based on ID if it exists
-  if (!decodedToken.id) {
-    return res.status(401).json({ error: 'invalid token' });
-  }
-  const user = await User.findById(decodedToken.id);
-
-  const card = new Card({
-    term: req.body.term,
-    definition: req.body.definition,
-    user: user._id,
-  });
-
   try {
+    // Decode JWT token
+    const decodedToken = jwt.verify(
+      getTokenFrom(req),
+      process.env.ACCESS_TOKEN_SECRET
+    );
+    // Set user based on ID if it exists
+    if (!decodedToken.id) {
+      return res.status(401).json({ error: 'invalid token' });
+    }
+    const user = await User.findById(decodedToken.id);
+
+    const card = new Card({
+      term: req.body.term,
+      definition: req.body.definition,
+      user: user._id,
+    });
+
     const newCard = await card.save();
     user.cards = user.cards.concat(newCard._id);
     await user.save();
@@ -74,7 +76,9 @@ flashcardsRouter.delete('/:id', async (req, res) => {
 // Update card
 flashcardsRouter.put('/:id', async (req, res) => {
   try {
-    const updatedCard = await Card.findByIdAndUpdate(req.params.id, req.body);
+    const updatedCard = await Card.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     res.status(201).json(updatedCard);
   } catch (err) {
     res.status(500).json({ message: err.message });

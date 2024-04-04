@@ -4,6 +4,8 @@ const Deck = require('../models/deck'); // Get mongoose model
 const User = require('../models/user'); // Get mongoose model
 const jwt = require('jsonwebtoken');
 
+// TODO: Ensure authorization for all endpoints
+
 const getTokenFrom = (req) => {
   const authorization = req.get('authorization');
   if (authorization && authorization.startsWith('Bearer ')) {
@@ -34,23 +36,23 @@ decksRouter.get('/:id', async (req, res) => {
 
 // Add deck
 decksRouter.post('/', async (req, res) => {
-  // Decode JWT token
-  const decodedToken = jwt.verify(
-    getTokenFrom(req),
-    process.env.ACCESS_TOKEN_SECRET
-  );
-  // Set user based on ID if it exists
-  if (!decodedToken.id) {
-    return res.status(401).json({ error: 'invalid token' });
-  }
-  const user = await User.findById(decodedToken.id);
-
-  const deck = new Deck({
-    name: req.body.name,
-    owner: user._id,
-  });
-
   try {
+    // Decode JWT token
+    const decodedToken = jwt.verify(
+      getTokenFrom(req),
+      process.env.ACCESS_TOKEN_SECRET
+    );
+    // Set user based on ID if it exists
+    if (!decodedToken.id) {
+      return res.status(401).json({ error: 'invalid token' });
+    }
+    const user = await User.findById(decodedToken.id);
+
+    const deck = new Deck({
+      name: req.body.name,
+      owner: user._id,
+    });
+
     const newDeck = await deck.save();
     user.decks = user.decks.concat(newDeck._id);
     await user.save();
@@ -73,7 +75,10 @@ decksRouter.delete('/:id', async (req, res) => {
 // Update deck
 decksRouter.put('/:id', async (req, res) => {
   try {
-    const updatedDeck = await Deck.findByIdAndUpdate(req.params.id, req.body);
+    req.body.lastUpdated = new Date();
+    const updatedDeck = await Deck.findByIdAndUpdate(req.params.id, req.body, {
+      new: true, // ensures that the updated deck is returned instead of the original one
+    });
     res.status(201).json(updatedDeck);
   } catch (err) {
     res.status(500).json({ message: err.message });
