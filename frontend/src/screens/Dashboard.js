@@ -35,7 +35,7 @@ const Dashboard = () => {
         <form className="create-deck-form" onSubmit={createDeckHandler}>
           <h2>Create a deck</h2>
           <div className="create-deck-input">
-            <label for="deck-name">Name</label>
+            <label htmlFor="deck-name">Name</label>
             <input type="text" name="deck-name" id="deck-name" />
           </div>
           <div className="create-deck-input">
