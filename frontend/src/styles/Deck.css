@@ -1,0 +1,10 @@
+.deck {
+  padding: 5px;
+  border-radius: 5px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.deck:hover {
+  text-decoration: underline;
+}

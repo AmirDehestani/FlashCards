@@ -6,6 +6,7 @@ import Landing from './screens/Landing';
 import Login from './screens/Login';
 import Register from './screens/Register';
 import './styles/index.css';
+import Dashboard from './screens/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
+    element: <Dashboard />,
+  },
+  {
+    path: '/app',
     element: <App />,
   },
   {

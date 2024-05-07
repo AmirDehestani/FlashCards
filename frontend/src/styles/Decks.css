@@ -1,0 +1,11 @@
+.decks-panel {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  width: fit-content;
+  height: fit-content;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

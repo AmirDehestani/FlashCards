@@ -1,0 +1,23 @@
+.create-deck-form {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.create-deck-input {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  justify-content: right;
+}
+
+.create-deck-input input {
+  width: 200px;
+}

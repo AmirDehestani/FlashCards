@@ -5,8 +5,8 @@ const getAll = () => {
   return axios.get(url).then((res) => res.data);
 };
 
-const saveDeck = (newDeck) => {
-  return axios.post(url, newDeck).then((res) => getAll());
+const createDeck = (name) => {
+  return axios.post(url, name).then((res) => getAll());
 };
 
 const deleteDeck = (id) => {
@@ -17,5 +17,5 @@ const updateDeck = (id, updatedDeck) => {
   return axios.put(`${url}/${id}`, updatedDeck).then((res) => getAll());
 };
 
-const deckService = { getAll, saveDeck, deleteDeck, updateDeck };
+const deckService = { getAll, createDeck, deleteDeck, updateDeck };
 export default deckService;
