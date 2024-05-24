@@ -7,4 +7,5 @@
 
 .deck:hover {
   text-decoration: underline;
+  background-color: var(--secondary-color);
 }

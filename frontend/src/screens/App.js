@@ -4,10 +4,15 @@ import Cards from '../components/Cards';
 import Navbar from '../components/Navbar';
 import { useEffect, useState } from 'react';
 import apiServices from '../services/flashcardService';
+import deckService from '../services/deckService';
+import { useParams } from 'react-router-dom';
 
 const App = () => {
+  const { deckId } = useParams();
+
   // API services
   const { getAll, saveCard, deleteCard, updateCard } = apiServices;
+  const { getAllCards } = deckService;
 
   // Application state
   // State to store all cards
@@ -16,6 +21,7 @@ const App = () => {
   const [newFlashcard, setNewFlashcard] = useState({
     term: '',
     definition: '',
+    deckId: deckId,
   });
 
   // Handlers
@@ -47,10 +53,10 @@ const App = () => {
   };
 
   useEffect(() => {
-    getAll()
+    getAllCards(deckId)
       .then((res) => setFlashcards(res))
       .catch((err) => console.log('error fetching data: ', err));
-  }, [getAll]);
+  }, []);
 
   return (
     <>

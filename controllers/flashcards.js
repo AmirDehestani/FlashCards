@@ -1,7 +1,8 @@
 const express = require('express');
 const flashcardsRouter = express.Router();
-const Card = require('../models/flashcard'); // Get mongoose model
-const User = require('../models/user'); // Get mongoose model
+const Card = require('../models/flashcard');
+const User = require('../models/user');
+const Deck = require('../models/deck');
 const jwt = require('jsonwebtoken');
 
 // TODO: Ensure authorization for all endpoints
@@ -47,16 +48,20 @@ flashcardsRouter.post('/', async (req, res) => {
       return res.status(401).json({ error: 'invalid token' });
     }
     const user = await User.findById(decodedToken.id);
+    const deck = await Deck.findById(req.body.deckId);
 
     const card = new Card({
       term: req.body.term,
       definition: req.body.definition,
       user: user._id,
+      deck: req.body.deckId,
     });
 
     const newCard = await card.save();
     user.cards = user.cards.concat(newCard._id);
     await user.save();
+    deck.cards = deck.cards.concat(newCard._id);
+    await deck.save();
     res.status(201).json(newCard);
   } catch (err) {
     res.status(400).json({ message: err.message });

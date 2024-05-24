@@ -15,6 +15,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     requierd: true,
   },
+  cards: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Card',
+    },
+  ],
   decks: [
     {
       type: mongoose.Schema.Types.ObjectId,

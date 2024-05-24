@@ -34,6 +34,16 @@ decksRouter.get('/:id', async (req, res) => {
   }
 });
 
+// Get all cards in deck
+decksRouter.get('/:id/cards', async (req, res) => {
+  try {
+    const deck = await Deck.findById(req.params.id).populate('cards');
+    res.json(deck.cards);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+});
+
 // Add deck
 decksRouter.post('/', async (req, res) => {
   try {
